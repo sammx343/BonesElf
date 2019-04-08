@@ -166,8 +166,8 @@ public class PlayerPlatformerController : PhysicsObject
 
         if(collision.gameObject.tag == "DestroyablePlatform")
         {
-            Debug.Log("DESTROY");
-            Destroy(collision.gameObject);
+            //Debug.Log("DESTROY");
+            //Destroy(collision.gameObject);
         }
     }
 
