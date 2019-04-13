@@ -19,6 +19,9 @@ public class PlayerPlatformerController : PhysicsObject
     private bool pushed = false;
     private float pushTime;
 
+
+
+
     // Use this for initialization
     void Awake()
     {
@@ -161,7 +164,7 @@ public class PlayerPlatformerController : PhysicsObject
             //transform.Translate(15, 0, 0, Space.World);
             pushed = true;
             pushTime = Time.time;
-            pushObject();
+            //pushObject();
         }
 
         if(collision.gameObject.tag == "DestroyablePlatform")

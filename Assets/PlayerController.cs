@@ -7,101 +7,189 @@ public class PlayerController : MonoBehaviour {
     private Animator animator;
     public GameObject Elf;
     private Rigidbody2D rgdb;
-    public float velocity = 15f;
+    public float maxSpeed = 15;
     public float jumpForce = 15000f;
+    public float jumpTakeOffSpeed = 15f;
 
-    public enum PlayerAction { Idle, Run, Crunch, Jump, PreJump }
+    public enum PlayerAction { Idle, Run, Crunch, PostCrunch, Jump }
     public PlayerAction playerAction = PlayerAction.Idle;
 
-    public LayerMask groundLayers;
-
-    bool running = false;
-    bool isGrounded = false;
+    private float velocityX = 0;
+    private float velocityY = 0;
+    
+    private bool grounded;
+    public Transform groundCheck;
+    float groundRadius = 0.2f;
+    public LayerMask whatIsGround;
+    public float ForceX = 0;
 
     // Use this for initialization
     void Start ()
     {
         rgdb = GetComponent<Rigidbody2D>();
         rgdb.useAutoMass = true;
-        rgdb.gravityScale = 2;
 
         animator = GetComponent<Animator>();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapArea(new Vector2(transform.position.x - 0.5f, transform.position.y - 0.5f),
-            new Vector2(transform.position.x + 0.5f, transform.position.y - 0.51f), groundLayers);
-        
+        Vector2 deltaPosition = rgdb.velocity * Time.deltaTime;
+        Vector2 move = Vector2.up * rgdb.position.y;
+
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+       
+    }
+    
+    void Update ()
+    {
         string clipName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
+        Vector2 move = Vector2.zero;
+
+        velocityY = rgdb.velocity.y;
+        move.x = Input.GetAxis("Horizontal");
+        
+        ForceX = ForceX < 1 ? 0 : (ForceX / ForceX) * Mathf.Abs(ForceX - 2);
+
+        rgdb.velocity = new Vector2(move.x * maxSpeed + ForceX, rgdb.velocity.y);
+
+        velocityX = Mathf.Abs(rgdb.velocity.x) / maxSpeed;
 
         if (Input.GetKey("right"))
         {
             run("right");
+            runAnimation();
         }
-        else if (Input.GetKey("left"))
+        else if(Input.GetKey("left"))
         {
             run("left");
+            runAnimation();
         }
         else if (Input.GetKey("down"))
         {
-            if (playerAction != PlayerAction.Crunch)
-            {
-                animator.Play("PreCrunch");
-            }
+            crunchAnimation();
+        }
+        else if (Input.GetKeyUp("down"))
+        {
+            postCrunchAnimation();
+        }
+        else
+        {
+            idleAnimation(clipName);
+        }
 
-            playerAction = PlayerAction.Crunch;
-        }
-        else if (Input.GetKey("up") && isGrounded)
+        if (Input.GetKeyDown("up") && grounded)
         {
-            if (playerAction != PlayerAction.PreJump)
+            rgdb.velocity = new Vector2(velocityX, jumpTakeOffSpeed);
+
+            if (playerAction == PlayerAction.Crunch)
             {
-                animator.Play("PreJump");
-                playerAction = PlayerAction.PreJump;
+                rgdb.velocity = new Vector2(velocityX, jumpTakeOffSpeed * 1.2f);
             }
         }
-        else if (playerAction == PlayerAction.PreJump && clipName == "Jump")
+        else if (Input.GetKeyUp("up"))
         {
-            rgdb.AddForce(Vector2.up* jumpForce);
-            playerAction = PlayerAction.Jump;
+            if (velocityY > 0)
+            {
+                rgdb.velocity = new Vector2(velocityX, rgdb.velocity.y * 0.5f);
+                //velocityY *= 0.5f;
+            }
         }
-        else if(playerAction != PlayerAction.Jump && playerAction != PlayerAction.PreJump)
-        {
-            playerAction = PlayerAction.Idle;
-            animator.Play("Idle");
-        }
-	}
 
-    void OnCollisionStay()
-    {
-        Debug.Log("tT");
+        jumpAnimation();
     }
 
     private void run(string movement)
     {
-        playerAction = PlayerAction.Run;
-        animator.Play("Run");
-
-        var move = new Vector3(Input.GetAxis("Horizontal"), 0);
-        rgdb.transform.position += move * velocity * Time.deltaTime;
-
-        Vector3 theScale = Elf.transform.localScale;
+        Vector3 theScale = transform.localScale;
 
         if (movement == "left" && theScale.x > 0f)
         {
             theScale.x *= -1;
             Elf.transform.localScale = theScale;
-        }else if(movement == "right" && theScale.x < 0f)
+        }
+        else if (movement == "right" && theScale.x < 0f)
         {
             theScale.x *= -1;
             Elf.transform.localScale = theScale;
         }
     }
 
-    private void OnDrawGizmos()
+    private void runAnimation()
     {
-        Gizmos.color = new Color(255, 1, 0, 0.5f);
-        Gizmos.DrawCube(new Vector2(transform.position.x, transform.position.y - 0.505f), new Vector2(1, 0.01f));
+        if (velocityX > 0.1f && grounded)
+        {
+            animator.Play("Run");
+            playerAction = PlayerAction.Run;
+        }
+    }
+
+    private void idleAnimation(string clipName)
+    {
+        if (grounded && velocityX < 0.1f && clipName != "PostCrunch")
+        {
+            animator.Play("Idle");
+            playerAction = PlayerAction.Idle;
+        }
+    }
+
+    private void jumpAnimation()
+    {
+        if (!grounded && playerAction != PlayerAction.Jump)
+        {
+            if (rgdb.velocity.y < -0.1f)
+            {
+                animator.Play("Falling");
+                playerAction = PlayerAction.Jump;
+            }
+            else
+            {
+                animator.Play("NewJump");
+                playerAction = PlayerAction.Jump;
+            }
+        }
+    }
+
+    private void crunchAnimation()
+    {
+        if (playerAction != PlayerAction.Crunch && grounded)
+        {
+            animator.Play("PreCrunch");
+            playerAction = PlayerAction.Crunch;
+        }
+    }
+
+    private void postCrunchAnimation()
+    {
+        if (playerAction == PlayerAction.Crunch && grounded && velocityX < 0.1f)
+        {
+            playerAction = PlayerAction.PostCrunch;
+            animator.Play("PostCrunch");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Trap")
+        {
+            StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.Out, "SampleScene"));
+        }
+
+        if (collision.gameObject.tag == "PushingTotem")
+        {
+            //transform.Translate(15, 0, 0, Space.World);
+            Debug.Log("Touching");
+            Vector2 impulse = new Vector2(5.0f, 5.0f);
+            ForceX = 60f;
+            //rgdb.velocity = new Vector2(30.0f, 0);
+            //pushObject();
+        }
+
+        if (collision.gameObject.tag == "DestroyablePlatform")
+        {
+            //Debug.Log("DESTROY");
+            //Destroy(collision.gameObject);
+        }
     }
 }

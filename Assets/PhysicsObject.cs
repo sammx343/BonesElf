@@ -35,6 +35,7 @@ public class PhysicsObject : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(grounded);
         targetVelocity = Vector2.zero;
         ComputeVelocity();
     }
@@ -99,8 +100,6 @@ public class PhysicsObject : MonoBehaviour
                 float modifiedDistance = hitBufferList[i].distance - shellRadius;
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
             }
-
-
         }
 
         rb2d.position = rb2d.position + move.normalized * distance;
