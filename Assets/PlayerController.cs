@@ -24,15 +24,17 @@ public class PlayerController : MonoBehaviour {
     public float ForceX = 0;
     public float ForceY = 0;
 
-    public float forcePushY = 5f;
-    public float forcePushX = 20f;
+    public float windFriction = 0.25f;
+    public float pushingTotemForce = 100f;
+    public bool canDie = true;
+
+    private float gravityScale;
     // Use this for initialization
     void Start ()
     {
         rgdb = GetComponent<Rigidbody2D>();
-        rgdb.useAutoMass = true;
-
         animator = GetComponent<Animator>();
+        gravityScale = rgdb.gravityScale;
     }
 
     private void FixedUpdate()
@@ -41,22 +43,26 @@ public class PlayerController : MonoBehaviour {
         Vector2 move = Vector2.up * rgdb.position.y;
 
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
-       
     }
-    
-    void Update ()
+
+    void Update()
     {
+        //Debug.Log(rgdb.velocity);
         string clipName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
+        //Debug.Log(clipName);
         Vector2 move = Vector2.zero;
 
         velocityY = rgdb.velocity.y;
-        
-        ForceX = Mathf.Abs(ForceX) < 1 ? 0 : (ForceX / ForceX) * Mathf.Abs(ForceX - 1);
-        ForceY = Mathf.Abs(ForceY) < 1 ? 0 : (ForceY / ForceY) * Mathf.Abs(ForceY - 1);
-        
-        if(playerAction == PlayerAction.Death)
+
+        ForceX = Mathf.Abs(ForceX) < 4 ? 0 : Mathf.Sign(ForceX) * (Mathf.Abs(ForceX) - gravityScale * windFriction);
+        ForceY = Mathf.Abs(ForceY) < 4 ? 0 : Mathf.Sign(ForceY) * (Mathf.Abs(ForceY) - gravityScale * windFriction);
+
+        Debug.Log(ForceX);
+
+        if (playerAction == PlayerAction.Death)
         {
+
             if (!grounded)
             {
                 if(clipName != "AirDeath" && clipName != "AirDeathFalling" && clipName != "Death" && clipName != "StayDeath")
@@ -79,8 +85,9 @@ public class PlayerController : MonoBehaviour {
             playerActions(clipName);
             move.x = Input.GetAxis("Horizontal");
         }
-
+        
         rgdb.velocity = new Vector2(move.x * maxSpeed + ForceX, rgdb.velocity.y + ForceY);
+
         velocityX = Mathf.Abs(rgdb.velocity.x) / maxSpeed;
     }
 
@@ -205,22 +212,35 @@ public class PlayerController : MonoBehaviour {
         {
             if (collision.gameObject.tag == "Trap")
             {
-                var opossingBodyVelocity = collision.GetComponent<Rigidbody2D>().velocity;
+                if (canDie)
+                {
+                    StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.Out, "SampleScene"));
+                    playerAction = PlayerAction.Death;
+                }
 
-                Debug.Log(collision.GetComponent<Rigidbody2D>().velocity);
-                playerAction = PlayerAction.Death;
+                Vector2 opossingBody = Vector2.zero;
+                if (collision.GetComponent<Rigidbody2D>() != null)
+                {
+                    opossingBody = collision.GetComponent<Rigidbody2D>().velocity;
+                }
 
-                ForceY = (opossingBodyVelocity.y > 0) ? opossingBodyVelocity.y : velocityY;
-                ForceX = (opossingBodyVelocity.x > 0) ? opossingBodyVelocity.x : velocityX;
-                
-                StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.Out, "SampleScene"));
+                if (!grounded)
+                {
+                    ForceY = opossingBody.y == 0? HelperMaxCollisionVelocity(rgdb.velocity.y * -1f) : HelperMaxCollisionVelocity(opossingBody.y);
+                }
+                ForceX = opossingBody.x == 0 ? HelperMaxCollisionVelocity(rgdb.velocity.x * -1f) : HelperMaxCollisionVelocity(opossingBody.x);
             }
 
             if (collision.gameObject.tag == "PushingTotem")
             {
                 //transform.Translate(15, 0, 0, Space.World);
-                ForceX = 50f;
+                ForceX = pushingTotemForce;
             }
         }
+    }
+
+    private float HelperMaxCollisionVelocity(float velocity)
+    {
+        return Mathf.Sign(velocity) * Mathf.Min(Mathf.Abs(velocity), 20);
     }
 }
