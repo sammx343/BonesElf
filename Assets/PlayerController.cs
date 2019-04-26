@@ -24,10 +24,10 @@ public class PlayerController : MonoBehaviour {
     public float ForceX = 0;
     public float ForceY = 0;
 
-    public float windFriction = 0.25f;
+    public float windFriction = 0.20f;
     public float pushingTotemForce = 100f;
     public bool canDie = true;
-
+    Vector2 move;
     private float gravityScale;
     // Use this for initialization
     void Start ()
@@ -39,27 +39,25 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        Vector2 deltaPosition = rgdb.velocity * Time.deltaTime;
-        Vector2 move = Vector2.up * rgdb.position.y;
-
+        ForceX = Mathf.Abs(ForceX) < 4 ? 0 : Mathf.Sign(ForceX) * (Mathf.Abs(ForceX) - gravityScale * windFriction);
+        ForceY = Mathf.Abs(ForceY) < 4 ? 0 : Mathf.Sign(ForceY) * (Mathf.Abs(ForceY) - gravityScale * windFriction);
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
+        
+        rgdb.velocity = new Vector2(move.x * maxSpeed + ForceX, rgdb.velocity.y + ForceY);
     }
 
     void Update()
     {
+        move = Vector2.zero;
         //Debug.Log(rgdb.velocity);
         string clipName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
         //Debug.Log(clipName);
-        Vector2 move = Vector2.zero;
+        
 
         velocityY = rgdb.velocity.y;
 
-        ForceX = Mathf.Abs(ForceX) < 4 ? 0 : Mathf.Sign(ForceX) * (Mathf.Abs(ForceX) - gravityScale * windFriction);
-        ForceY = Mathf.Abs(ForceY) < 4 ? 0 : Mathf.Sign(ForceY) * (Mathf.Abs(ForceY) - gravityScale * windFriction);
-
-        Debug.Log(ForceX);
-
+        
         if (playerAction == PlayerAction.Death)
         {
 
@@ -86,7 +84,6 @@ public class PlayerController : MonoBehaviour {
             move.x = Input.GetAxis("Horizontal");
         }
         
-        rgdb.velocity = new Vector2(move.x * maxSpeed + ForceX, rgdb.velocity.y + ForceY);
 
         velocityX = Mathf.Abs(rgdb.velocity.x) / maxSpeed;
     }
@@ -226,7 +223,7 @@ public class PlayerController : MonoBehaviour {
 
                 if (!grounded)
                 {
-                    ForceY = opossingBody.y == 0? HelperMaxCollisionVelocity(rgdb.velocity.y * -1f) : HelperMaxCollisionVelocity(opossingBody.y);
+                    ForceY = opossingBody.y == 0? HelperMaxCollisionVelocity(rgdb.velocity.y * -0.7f) : HelperMaxCollisionVelocity(opossingBody.y);
                 }
                 ForceX = opossingBody.x == 0 ? HelperMaxCollisionVelocity(rgdb.velocity.x * -1f) : HelperMaxCollisionVelocity(opossingBody.x);
             }
@@ -241,6 +238,6 @@ public class PlayerController : MonoBehaviour {
 
     private float HelperMaxCollisionVelocity(float velocity)
     {
-        return Mathf.Sign(velocity) * Mathf.Min(Mathf.Abs(velocity), 20);
+        return Mathf.Sign(velocity) * Mathf.Min(Mathf.Abs(velocity), 30);
     }
 }
