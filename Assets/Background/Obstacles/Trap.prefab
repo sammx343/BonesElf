@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4591490751006750}
   - component: {fileID: 212000975662428646}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: totem-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 60093359132442210}
   - component: {fileID: 114283969782596366}
   - component: {fileID: 50760667898379578}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trap
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4071979027305672}
   - component: {fileID: 212441912241552558}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

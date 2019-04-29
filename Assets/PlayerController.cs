@@ -8,10 +8,11 @@ public class PlayerController : MonoBehaviour {
     public GameObject Elf;
     private Rigidbody2D rgdb;
     public float maxSpeed = 15;
+    public float ropeSpeed = 2f;
     public float jumpForce = 15000f;
     public float jumpTakeOffSpeed = 15f;
 
-    public enum PlayerAction { Idle, Run, Crunch, PostCrunch, Jump, Death }
+    public enum PlayerAction { Idle, Run, Crunch, PostCrunch, Jump, Death, HangUp }
     public PlayerAction playerAction = PlayerAction.Idle;
 
     private float velocityX = 0;
@@ -43,7 +44,14 @@ public class PlayerController : MonoBehaviour {
         ForceY = Mathf.Abs(ForceY) < 4 ? 0 : Mathf.Sign(ForceY) * (Mathf.Abs(ForceY) - gravityScale * windFriction);
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         
-        rgdb.velocity = new Vector2(move.x * maxSpeed + ForceX, rgdb.velocity.y + ForceY);
+        if(playerAction == PlayerAction.HangUp)
+        {
+            rgdb.velocity = new Vector2(0, move.y * ropeSpeed);
+        }
+        else
+        {
+            rgdb.velocity = new Vector2(move.x * maxSpeed + ForceX, rgdb.velocity.y + ForceY);
+        }
     }
 
     void Update()
@@ -53,14 +61,12 @@ public class PlayerController : MonoBehaviour {
         string clipName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
 
         //Debug.Log(clipName);
-        
 
         velocityY = rgdb.velocity.y;
-
         
         if (playerAction == PlayerAction.Death)
         {
-
+            rgdb.gravityScale = gravityScale;
             if (!grounded)
             {
                 if(clipName != "AirDeath" && clipName != "AirDeathFalling" && clipName != "Death" && clipName != "StayDeath")
@@ -80,10 +86,16 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            playerActions(clipName);
-            move.x = Input.GetAxis("Horizontal");
+            if (playerAction != PlayerAction.HangUp)
+            {
+                playerActions(clipName);
+                move.x = Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                hangedUpActions();
+            }
         }
-        
 
         velocityX = Mathf.Abs(rgdb.velocity.x) / maxSpeed;
     }
@@ -203,6 +215,19 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void hangedUpActions()
+    {
+        move.y = Input.GetAxis("Vertical");
+
+        if(Mathf.Abs(rgdb.velocity.y) > 0.01f)
+        {
+            animator.Play("Hanging");
+        }else
+        {
+            animator.Play("HangingIdle");
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (playerAction != PlayerAction.Death)
@@ -228,6 +253,14 @@ public class PlayerController : MonoBehaviour {
                 ForceX = opossingBody.x == 0 ? HelperMaxCollisionVelocity(rgdb.velocity.x * -1f) : HelperMaxCollisionVelocity(opossingBody.x);
             }
 
+            if (collision.gameObject.tag == "Rope")
+            {
+                rgdb.velocity = new Vector2(0, 0);
+                rgdb.gravityScale = 0;
+                playerAction = PlayerAction.HangUp;
+                grounded = false;
+            }
+
             if (collision.gameObject.tag == "PushingTotem")
             {
                 //transform.Translate(15, 0, 0, Space.World);
@@ -236,8 +269,20 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Rope")
+        {
+            rgdb.gravityScale = gravityScale;
+            if (playerAction != PlayerAction.Death)
+            {
+                playerAction = PlayerAction.Jump;
+            }
+        }
+    }
+
     private float HelperMaxCollisionVelocity(float velocity)
     {
-        return Mathf.Sign(velocity) * Mathf.Min(Mathf.Abs(velocity), 30);
+        return Mathf.Sign(velocity) * Mathf.Min(Mathf.Abs(velocity), 25);
     }
 }

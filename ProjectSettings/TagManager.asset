@@ -8,6 +8,7 @@ TagManager:
   - Trap
   - PushingTotem
   - DestroyablePlatform
+  - Rope
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Background
   - OneWayPlatform
   - Elf
-  - 
+  - Trap
   - 
   - 
   - 
