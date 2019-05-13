@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpForce = 15000f;
     public float jumpTakeOffSpeed = 15f;
 
-    public enum PlayerAction { Idle, Run, Crunch, PostCrunch, Jump, Death, HangUp }
+    public enum PlayerAction { Idle, Run, Crunch, PostCrunch, Jump, Falling, Death, HangUp }
     public PlayerAction playerAction = PlayerAction.Idle;
 
     private float velocityX = 0;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
     
     private bool grounded;
     public Transform groundCheck;
-    float groundRadius = 0.2f;
+    float groundRadius = 0.5f;
     public LayerMask whatIsGround;
     public float ForceX = 0;
     public float ForceY = 0;
@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour {
     public bool canDie = true;
     Vector2 move;
     private float gravityScale;
+    private bool ropeEnd = false;
+
+    private float HANGED_ACTIONS_DELAY = 0.5f;
+    private float hangedActionsTimer = 0;
     // Use this for initialization
     void Start ()
     {
@@ -46,7 +50,7 @@ public class PlayerController : MonoBehaviour {
         
         if(playerAction == PlayerAction.HangUp)
         {
-            rgdb.velocity = new Vector2(0, move.y * ropeSpeed);
+            rgdb.velocity = new Vector2(ForceX, move.y * ropeSpeed);
         }
         else
         {
@@ -59,8 +63,6 @@ public class PlayerController : MonoBehaviour {
         move = Vector2.zero;
         //Debug.Log(rgdb.velocity);
         string clipName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-
-        //Debug.Log(clipName);
 
         velocityY = rgdb.velocity.y;
         
@@ -86,14 +88,14 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            if (playerAction != PlayerAction.HangUp)
+            if (playerAction == PlayerAction.HangUp)
             {
-                playerActions(clipName);
-                move.x = Input.GetAxis("Horizontal");
+                hangedUpActions(clipName);
             }
             else
             {
-                hangedUpActions();
+                playerActions(clipName);
+                move.x = Input.GetAxis("Horizontal");
             }
         }
 
@@ -143,7 +145,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        jumpAnimation();
+        jumpAnimation(clipName);
     }
 
     private void run(string movement)
@@ -152,19 +154,17 @@ public class PlayerController : MonoBehaviour {
 
         if (movement == "left" && theScale.x > 0f)
         {
-            theScale.x *= -1;
-            Elf.transform.localScale = theScale;
+            transformLocalScale();
         }
         else if (movement == "right" && theScale.x < 0f)
         {
-            theScale.x *= -1;
-            Elf.transform.localScale = theScale;
+            transformLocalScale();
         }
     }
 
     private void runAnimation()
     {
-        if (velocityX > 0.1f && grounded && velocityY < 0.1f)
+        if (velocityX > 0.1f && grounded)
         {
             animator.Play("Run");
             playerAction = PlayerAction.Run;
@@ -180,18 +180,18 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void jumpAnimation()
+    private void jumpAnimation(string clipName)
     {
-        if (!grounded && playerAction != PlayerAction.Jump)
+        if (!grounded && playerAction != PlayerAction.Jump && clipName != "RopeFalling")
         {
-            if (rgdb.velocity.y < -0.1f)
+            if (rgdb.velocity.y > 0.1f && clipName != "Falling" && clipName != "AlwaysFall")
             {
-                animator.Play("Falling");
+                animator.Play("NewJump");
                 playerAction = PlayerAction.Jump;
             }
             else
             {
-                animator.Play("NewJump");
+                animator.Play("Falling");
                 playerAction = PlayerAction.Jump;
             }
         }
@@ -215,17 +215,72 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void hangedUpActions()
+    private void hangedUpActions(string clipName)
     {
         move.y = Input.GetAxis("Vertical");
 
-        if(Mathf.Abs(rgdb.velocity.y) > 0.01f)
+        float horizontalDirection = transform.localScale.x;
+
+        if (hangedActionsTimer <= 0)
+        {
+            if (Input.GetKeyUp("left") && horizontalDirection < 0)
+            {
+                animator.Play("RopeChange");
+                hangedActionsTimer = HANGED_ACTIONS_DELAY;
+                clipName = "RopeChange";
+            }
+
+            if (Input.GetKeyUp("right") && horizontalDirection > 0)
+            {
+                animator.Play("RopeChange");
+                hangedActionsTimer = HANGED_ACTIONS_DELAY;
+                clipName = "RopeChange";
+            }
+        }
+        else
+        {
+            hangedActionsTimer -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyUp("right") && horizontalDirection < 0 || Input.GetKeyUp("left") && horizontalDirection > 0)
+        {
+            animator.Play("RopeFalling");
+            clipName = "RopeFalling";
+        }
+
+        if (ropeEnd == true && move.y > 0)
+            move.y = 0;
+
+        if (Mathf.Abs(rgdb.velocity.y) > 0.01f)
         {
             animator.Play("Hanging");
-        }else
+        }
+        else if(clipName != "RopeFalling" && clipName != "RopeChange")
         {
             animator.Play("HangingIdle");
         }
+    }
+
+    public void applyRopeFallingForce()
+    {
+        ForceX = 50 * -transform.localScale.x;
+    }
+
+    public void applyRopeChangeForce()
+    {
+        ForceX = 40 * transform.localScale.x;
+    }
+
+    public void ropeChangeAnimation()
+    {
+        applyRopeChangeForce();
+        transformLocalScale();
+    }
+    public void transformLocalScale()
+    {
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        Elf.transform.localScale = theScale;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -259,12 +314,18 @@ public class PlayerController : MonoBehaviour {
                 rgdb.gravityScale = 0;
                 playerAction = PlayerAction.HangUp;
                 grounded = false;
+                hangedActionsTimer = HANGED_ACTIONS_DELAY;
             }
 
             if (collision.gameObject.tag == "PushingTotem")
             {
                 //transform.Translate(15, 0, 0, Space.World);
                 ForceX = pushingTotemForce;
+            }
+
+            if(collision.gameObject.tag == "RopeEnd")
+            {
+                ropeEnd = true;
             }
         }
     }
@@ -273,11 +334,17 @@ public class PlayerController : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Rope")
         {
-            rgdb.gravityScale = gravityScale;
-            if (playerAction != PlayerAction.Death)
+            Debug.Log("Falls from rope");
+            rgdb.gravityScale = gravityScale; 
+            if(playerAction != PlayerAction.Death)
             {
-                playerAction = PlayerAction.Jump;
+                playerAction = PlayerAction.Falling;
             }
+        }
+
+        if (collision.gameObject.tag == "RopeEnd")
+        {
+            ropeEnd = false;
         }
     }
 

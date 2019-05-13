@@ -1,26 +1,27 @@
 fileFormatVersion: 2
-guid: 189ec382ff9ce3c48ab18a8000d6401f
+guid: e71cc9af7fa04ed4784157fdb7a5ddf5
 TextureImporter:
   fileIDToRecycleName:
-    21300000: bones_0
-    21300002: bones_1
-    21300004: bones_2
-    21300006: bones_3
-    21300008: bones_4
-    21300010: bones_5
-    21300012: bones_6
-    21300014: bones_7
-    21300016: bones_8
-    21300018: bones_9
-    21300020: bones_10
-    21300022: bones_11
-    21300024: bones_12
-    21300026: bones_13
-    21300028: bones_14
-    21300030: bones_15
-    21300032: bones_16
-    21300034: bones_17
-    21300036: bones_18
+    21300000: paquete_plataformas_0
+    21300002: paquete_plataformas_1
+    21300004: paquete_plataformas_2
+    21300006: paquete_plataformas_3
+    21300008: paquete_plataformas_4
+    21300010: paquete_plataformas_5
+    21300012: paquete_plataformas_6
+    21300014: paquete_plataformas_7
+    21300016: paquete_plataformas_8
+    21300018: paquete_plataformas_9
+    21300020: paquete_plataformas_10
+    21300022: paquete_plataformas_11
+    21300024: paquete_plataformas_12
+    21300026: paquete_plataformas_13
+    21300028: paquete_plataformas_14
+    21300030: paquete_plataformas_15
+    21300032: paquete_plataformas_16
+    21300034: paquete_plataformas_17
+    21300036: paquete_plataformas_18
+    21300038: paquete_plataformas_19
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -50,7 +51,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -125,53 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bones_0
+      name: paquete_plataformas_0
       rect:
         serializedVersion: 2
-        x: 261
-        y: 1183
-        width: 134
-        height: 111
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 224982d1cb8e25442bef9dc0f060968d
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bones_1
-      rect:
-        serializedVersion: 2
-        x: 399
-        y: 1129
-        width: 185
-        height: 226
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: caa40ef823c2b8743b679e9c7f09afcd
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bones_2
-      rect:
-        serializedVersion: 2
-        x: 925
-        y: 468
-        width: 320
-        height: 882
+        x: 442
+        y: 606
+        width: 2187
+        height: 273
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,327 +140,387 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3849db61c46ba9249b4a7b50458284fa
+      spriteID: f3dc73114f88e3e4caf96a717b73e231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_3
+      name: paquete_plataformas_1
       rect:
         serializedVersion: 2
-        x: 455.99997
-        y: 1024
-        width: 77.00003
-        height: 107
-      alignment: 9
-      pivot: {x: 0.5000002, y: 0.49999997}
+        x: 790
+        y: 871
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa6832f4f594f9e43bcaf6502b94cad9
+      spriteID: 571ebda141693c046af7581e7db51c29
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_4
+      name: paquete_plataformas_2
       rect:
         serializedVersion: 2
-        x: 264
-        y: 786
-        width: 95
-        height: 194
-      alignment: 9
-      pivot: {x: 0.5, y: 0.49999997}
+        x: 970
+        y: 868
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a801214cf41df8244aa0630f67854b9d
+      spriteID: 852842de2d97a9142b31cc6f924213dc
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_5
+      name: paquete_plataformas_3
       rect:
         serializedVersion: 2
-        x: 399
-        y: 790.99994
-        width: 182
-        height: 224.00006
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5000001}
+        x: 1846
+        y: 866
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39976c7a03bf7fb41b4eb3e0cbb4d8f6
+      spriteID: 144d7329d25abab48991887e0577cd5f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_6
+      name: paquete_plataformas_4
       rect:
         serializedVersion: 2
-        x: 610
-        y: 804.00006
-        width: 95
-        height: 193.99994
-      alignment: 9
-      pivot: {x: 0.5, y: 0.49999985}
+        x: 85
+        y: 556
+        width: 157
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61e460400c1f6e945a625d7c3eadc75f
+      spriteID: b5f3d79bddffbf948808e6d4f3a66e65
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_7
+      name: paquete_plataformas_5
       rect:
         serializedVersion: 2
-        x: 226
-        y: 615
-        width: 76
-        height: 160
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        x: 2939
+        y: 199
+        width: 304
+        height: 614
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0059ea52505a5754ba8f5740d4aafd14
+      spriteID: f343ee852e5244d40828dd3502676611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_8
+      name: paquete_plataformas_6
       rect:
         serializedVersion: 2
-        x: 434
-        y: 625
-        width: 135
-        height: 133
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        x: 85
+        y: 313
+        width: 157
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6eb7617f3dd3a094ba199f7c0fc92684
+      spriteID: 2f6b195eb35976249b0526006879a09a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_9
+      name: paquete_plataformas_7
       rect:
         serializedVersion: 2
-        x: 675
-        y: 635
-        width: 76
-        height: 160
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        x: 442
+        y: 170
+        width: 222
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36e5e72db09733548bb8728f7b50e7ca
+      spriteID: fe9ac7ca47756ab4aae09a6968fb44c0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_10
+      name: paquete_plataformas_8
       rect:
         serializedVersion: 2
-        x: 195
-        y: 510
-        width: 82
-        height: 92
-      alignment: 9
-      pivot: {x: 0.49999997, y: 0.5}
+        x: 728
+        y: 170
+        width: 729
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 189f0a2585ed08049981d750923ba991
+      spriteID: 72f7909b9a759df469de4f78eedc952f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_11
+      name: paquete_plataformas_9
       rect:
         serializedVersion: 2
-        x: 404.99997
-        y: 359
-        width: 76
-        height: 249
-      alignment: 9
-      pivot: {x: 0.5000004, y: 0.49999997}
+        x: 945
+        y: 434
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3619a83dd03225c41830c9ec91f6c08c
+      spriteID: d5c86eb8305c65945a2e5045cdb7f076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_12
+      name: paquete_plataformas_10
       rect:
         serializedVersion: 2
-        x: 514
-        y: 349
-        width: 93
-        height: 259
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        x: 1124
+        y: 433
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c43189e0ab40fc547b3224ddf75c1d88
+      spriteID: fed69f40962d8eb4ebf8b4b4cbea4e6f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_13
+      name: paquete_plataformas_11
       rect:
         serializedVersion: 2
-        x: 680
-        y: 522
-        width: 82
-        height: 96
-      alignment: 9
-      pivot: {x: 0.49999997, y: 0.5}
+        x: 1521
+        y: 175
+        width: 217
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bdec8ae999ab834198c8e79357a1599
+      spriteID: c4087a68f6053384a9fe7ea7730162d3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_14
+      name: paquete_plataformas_12
       rect:
         serializedVersion: 2
-        x: 394
-        y: 147
-        width: 71
-        height: 199
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        x: 1656
+        y: 431
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a1634a1fd3d31747a4cb4571d6144b4
+      spriteID: 011b4ad178105b7478c1856e36bf707a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_15
+      name: paquete_plataformas_13
       rect:
         serializedVersion: 2
-        x: 530
-        y: 155
-        width: 60
-        height: 185
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        x: 1851
+        y: 166
+        width: 559
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26e9b5e121080eb4d803d3f913e9fbdf
+      spriteID: cdd4026458ee5c642a39d06cf3852826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_16
+      name: paquete_plataformas_14
       rect:
         serializedVersion: 2
-        x: 199.99998
-        y: 47
-        width: 142.00002
-        height: 67.00001
-      alignment: 9
-      pivot: {x: 0.50000006, y: 0.49999997}
+        x: 2577
+        y: 290
+        width: 274
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47c9d930038086e4b9ac33109a9c0509
+      spriteID: 4bc2cab3743d2e0438231ec9e7848c43
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_17
+      name: paquete_plataformas_15
       rect:
         serializedVersion: 2
-        x: 393
-        y: 46.000004
-        width: 96
-        height: 82
-      alignment: 9
-      pivot: {x: 0.5, y: 0.49999994}
+        x: 2403
+        y: 208
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f28ffe6bb18789446916d3199efc1d2d
+      spriteID: a6cb0b5e794083b488b52d9dcbea1847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bones_18
+      name: paquete_plataformas_16
       rect:
         serializedVersion: 2
-        x: 534
-        y: 47
-        width: 143
-        height: 78
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        x: 2402
+        y: 194
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdb9d9ff283d0cd46ad6491b8e9271d1
+      spriteID: 964ef4363ce7ce24cacf78356597cfb2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paquete_plataformas_17
+      rect:
+        serializedVersion: 2
+        x: 2396
+        y: 171
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b92f8b5bfccbc3145adea8c983ed92ec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paquete_plataformas_18
+      rect:
+        serializedVersion: 2
+        x: 1942
+        y: 153
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66777686cb3ef404e9684a0c094f44c4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paquete_plataformas_19
+      rect:
+        serializedVersion: 2
+        x: 2396
+        y: 154
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e348793a794f92745b742a13bf6b70fa
       vertices: []
       indices: 
       edges: []
@@ -507,7 +528,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7fbf240af9202f24893aa1aaa4c2c979
+    spriteID: 5392a36d22121834785c65f1e6da8c28
     vertices: []
     indices: 
     edges: []
@@ -515,6 +536,6 @@ TextureImporter:
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
-  userData: 636874378272530495
+  userData: 
   assetBundleName: 
   assetBundleVariant: 

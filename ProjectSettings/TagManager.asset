@@ -9,6 +9,8 @@ TagManager:
   - PushingTotem
   - DestroyablePlatform
   - Rope
+  - RopeEnd
+  - Enemy
   layers:
   - Default
   - TransparentFX
