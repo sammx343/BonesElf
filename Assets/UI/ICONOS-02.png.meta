@@ -1,0 +1,444 @@
+fileFormatVersion: 2
+guid: 9c8717876370f6e4eacee7a9967ccc78
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ICONOS-02_0
+    21300002: ICONOS-02_1
+    21300004: ICONOS-02_2
+    21300006: ICONOS-02_3
+    21300008: ICONOS-02_4
+    21300010: ICONOS-02_5
+    21300012: ICONOS-02_6
+    21300014: ICONOS-02_7
+    21300016: ICONOS-02_8
+    21300018: ICONOS-02_9
+    21300020: ICONOS-02_10
+    21300022: ICONOS-02_11
+    21300024: ICONOS-02_12
+    21300026: ICONOS-02_13
+    21300028: ICONOS-02_14
+    21300030: ICONOS-02_15
+    21300032: ICONOS-02_16
+    21300034: ICONOS-02_17
+    21300036: ICONOS-02_18
+    21300038: ICONOS-02_19
+    21300040: ICONOS-02_20
+    21300042: ICONOS-02_21
+    21300044: ICONOS-02_22
+    21300046: ICONOS-02_23
+    21300048: ICONOS-02_24
+    21300050: ICONOS-02_25
+    21300052: ICONOS-02_26
+    21300054: ICONOS-02_27
+    21300056: ICONOS-02_28
+    21300058: ICONOS-02_29
+    21300060: ICONOS-02_30
+    21300062: ICONOS-02_31
+    21300064: ICONOS-02_32
+    21300066: ICONOS-02_33
+    21300068: ICONOS-02_34
+    21300070: ICONOS-02_35
+    21300072: ICONOS-02_36
+    21300074: ICONOS-02_37
+    21300076: ICONOS-02_38
+    21300078: ICONOS-02_39
+    21300080: ICONOS-02_40
+    21300082: ICONOS-02_41
+    21300084: ICONOS-02_42
+    21300086: ICONOS-02_43
+    21300088: ICONOS-02_44
+    21300090: ICONOS-02_45
+    21300092: ICONOS-02_46
+    21300094: ICONOS-02_47
+    21300096: ICONOS-02_48
+    21300098: ICONOS-02_49
+    21300100: ICONOS-02_50
+    21300102: ICONOS-02_51
+    21300104: ICONOS-02_52
+    21300106: ICONOS-02_53
+    21300108: ICONOS-02_54
+    21300110: ICONOS-02_55
+    21300112: ICONOS-02_56
+    21300114: ICONOS-02_57
+    21300116: ICONOS-02_58
+    21300118: ICONOS-02_59
+    21300120: ICONOS-02_60
+    21300122: ICONOS-02_61
+    21300124: ICONOS-02_62
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ICONOS-02_10
+      rect:
+        serializedVersion: 2
+        x: 2454
+        y: 6671
+        width: 274
+        height: 334
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9607808add187914895342942d98bb5e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_39
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 3743
+        width: 419
+        height: 432
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 660ef6e1a3594b44ca8dd61ca2a36cf1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_40
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 3728
+        width: 444
+        height: 471
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afdd49c0ecc85c84f874de726c52e858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_45
+      rect:
+        serializedVersion: 2
+        x: 2409
+        y: 2889
+        width: 396
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dcd2d11fe0f7164bbba17fb1fc93ece
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_46
+      rect:
+        serializedVersion: 2
+        x: 3337
+        y: 2901
+        width: 439
+        height: 403
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbaa369e6940b864fb5cebf1424ca255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_47
+      rect:
+        serializedVersion: 2
+        x: 4329
+        y: 2889
+        width: 431
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91723ca88f763640abb42aa87f31326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_56
+      rect:
+        serializedVersion: 2
+        x: 2351
+        y: 2026
+        width: 486
+        height: 447
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb20f4b39cd95b641af0aade81c37053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_58
+      rect:
+        serializedVersion: 2
+        x: 2490
+        y: 1345
+        width: 277
+        height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a76a192a85edcbd4d8bfcc38e9d76ace
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_60
+      rect:
+        serializedVersion: 2
+        x: 2434
+        y: 421
+        width: 447
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64e5cc2bdf142af4cbf6127a1d964275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_62
+      rect:
+        serializedVersion: 2
+        x: 2346
+        y: 7564
+        width: 521
+        height: 473
+      alignment: 9
+      pivot: {x: 0.49999908, y: 0.4743771}
+      border: {x: 0, y: 0, z: 24, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c4a1adafdbe6a4690befece210124b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_0
+      rect:
+        serializedVersion: 2
+        x: 2385
+        y: 5682
+        width: 422
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 465b64af1c0982a4ebb5385e0a891f0e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_1
+      rect:
+        serializedVersion: 2
+        x: 2313
+        y: 4658
+        width: 530
+        height: 506
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a82b83173cedad449c099ee04d38764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS-02_2
+      rect:
+        serializedVersion: 2
+        x: 3372
+        y: 4694
+        width: 506
+        height: 434
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 930627253f7c81447a59953d776b035d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: b4aefb839e085c64daa0f2b07010a788
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

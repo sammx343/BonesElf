@@ -11,6 +11,10 @@ TagManager:
   - Rope
   - RopeEnd
   - Enemy
+  - RopeClimbUp
+  - KillPlace
+  - ClimbWall
+  - CloudDestroyer
   layers:
   - Default
   - TransparentFX
@@ -24,8 +28,8 @@ TagManager:
   - OneWayPlatform
   - Elf
   - Trap
-  - 
-  - 
+  - Camera Confiner
+  - Slope
   - 
   - 
   - 
