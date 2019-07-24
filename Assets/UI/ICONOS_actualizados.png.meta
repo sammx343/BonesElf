@@ -1,70 +1,18 @@
 fileFormatVersion: 2
-guid: 9c8717876370f6e4eacee7a9967ccc78
+guid: 85c9a297f570e6f4f9f867f55b5f61cb
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ICONOS-02_0
-    21300002: ICONOS-02_1
-    21300004: ICONOS-02_2
-    21300006: ICONOS-02_3
-    21300008: ICONOS-02_4
-    21300010: ICONOS-02_5
-    21300012: ICONOS-02_6
-    21300014: ICONOS-02_7
-    21300016: ICONOS-02_8
-    21300018: ICONOS-02_9
-    21300020: ICONOS-02_10
-    21300022: ICONOS-02_11
-    21300024: ICONOS-02_12
-    21300026: ICONOS-02_13
-    21300028: ICONOS-02_14
-    21300030: ICONOS-02_15
-    21300032: ICONOS-02_16
-    21300034: ICONOS-02_17
-    21300036: ICONOS-02_18
-    21300038: ICONOS-02_19
-    21300040: ICONOS-02_20
-    21300042: ICONOS-02_21
-    21300044: ICONOS-02_22
-    21300046: ICONOS-02_23
-    21300048: ICONOS-02_24
-    21300050: ICONOS-02_25
-    21300052: ICONOS-02_26
-    21300054: ICONOS-02_27
-    21300056: ICONOS-02_28
-    21300058: ICONOS-02_29
-    21300060: ICONOS-02_30
-    21300062: ICONOS-02_31
-    21300064: ICONOS-02_32
-    21300066: ICONOS-02_33
-    21300068: ICONOS-02_34
-    21300070: ICONOS-02_35
-    21300072: ICONOS-02_36
-    21300074: ICONOS-02_37
-    21300076: ICONOS-02_38
-    21300078: ICONOS-02_39
-    21300080: ICONOS-02_40
-    21300082: ICONOS-02_41
-    21300084: ICONOS-02_42
-    21300086: ICONOS-02_43
-    21300088: ICONOS-02_44
-    21300090: ICONOS-02_45
-    21300092: ICONOS-02_46
-    21300094: ICONOS-02_47
-    21300096: ICONOS-02_48
-    21300098: ICONOS-02_49
-    21300100: ICONOS-02_50
-    21300102: ICONOS-02_51
-    21300104: ICONOS-02_52
-    21300106: ICONOS-02_53
-    21300108: ICONOS-02_54
-    21300110: ICONOS-02_55
-    21300112: ICONOS-02_56
-    21300114: ICONOS-02_57
-    21300116: ICONOS-02_58
-    21300118: ICONOS-02_59
-    21300120: ICONOS-02_60
-    21300122: ICONOS-02_61
-    21300124: ICONOS-02_62
+    21300000: ICONOS_actualizados_0
+    21300002: ICONOS_actualizados_1
+    21300004: ICONOS_actualizados_2
+    21300006: ICONOS_actualizados_3
+    21300008: ICONOS_actualizados_4
+    21300010: ICONOS_actualizados_5
+    21300012: ICONOS_actualizados_6
+    21300014: ICONOS_actualizados_7
+    21300016: ICONOS_actualizados_8
+    21300018: ICONOS_actualizados_9
+    21300020: ICONOS_actualizados_10
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -169,213 +117,153 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ICONOS-02_10
+      name: ICONOS_actualizados_0
       rect:
         serializedVersion: 2
-        x: 2454
-        y: 6671
-        width: 274
-        height: 334
+        x: 2050
+        y: 5991
+        width: 399
+        height: 418
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9607808add187914895342942d98bb5e
+      spriteID: daf75f3107f8fe140a16fe0d709f6483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ICONOS-02_39
+      name: ICONOS_actualizados_1
       rect:
         serializedVersion: 2
-        x: 2361
-        y: 3743
-        width: 419
-        height: 432
+        x: 2050
+        y: 5053
+        width: 299
+        height: 439
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 660ef6e1a3594b44ca8dd61ca2a36cf1
+      spriteID: 00552a42d550c2a48a2d1ad00770d723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ICONOS-02_40
+      name: ICONOS_actualizados_2
       rect:
         serializedVersion: 2
-        x: 3377
-        y: 3728
-        width: 444
-        height: 471
+        x: 2020
+        y: 3997
+        width: 409
+        height: 398
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afdd49c0ecc85c84f874de726c52e858
+      spriteID: 5c32fd72d3eec584f9454950e5163b78
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ICONOS-02_45
+      name: ICONOS_actualizados_3
       rect:
         serializedVersion: 2
-        x: 2409
-        y: 2889
-        width: 396
-        height: 435
+        x: 1971
+        y: 3060
+        width: 508
+        height: 448
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dcd2d11fe0f7164bbba17fb1fc93ece
+      spriteID: 587de69847f01be459668893717135a5
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ICONOS-02_46
+      name: ICONOS_actualizados_4
       rect:
         serializedVersion: 2
-        x: 3337
-        y: 2901
+        x: 3017
+        y: 3109
+        width: 489
+        height: 449
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 573bd1d2009cbd14db9ef95b483f2f6f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS_actualizados_5
+      rect:
+        serializedVersion: 2
+        x: 1951
+        y: 2142
+        width: 518
+        height: 459
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57752991bebad1049af16bd33fb00850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS_actualizados_6
+      rect:
+        serializedVersion: 2
+        x: 3007
+        y: 2093
+        width: 489
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e25e4241b1c1e4fb50b0cd190c49c9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS_actualizados_7
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 1255
         width: 439
-        height: 403
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dbaa369e6940b864fb5cebf1424ca255
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ICONOS-02_47
-      rect:
-        serializedVersion: 2
-        x: 4329
-        y: 2889
-        width: 431
-        height: 435
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f91723ca88f763640abb42aa87f31326
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ICONOS-02_56
-      rect:
-        serializedVersion: 2
-        x: 2351
-        y: 2026
-        width: 486
-        height: 447
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eb20f4b39cd95b641af0aade81c37053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ICONOS-02_58
-      rect:
-        serializedVersion: 2
-        x: 2490
-        y: 1345
-        width: 277
-        height: 366
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a76a192a85edcbd4d8bfcc38e9d76ace
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ICONOS-02_60
-      rect:
-        serializedVersion: 2
-        x: 2434
-        y: 421
-        width: 447
-        height: 311
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64e5cc2bdf142af4cbf6127a1d964275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ICONOS-02_62
-      rect:
-        serializedVersion: 2
-        x: 2346
-        y: 7564
-        width: 521
-        height: 473
-      alignment: 9
-      pivot: {x: 0.49999908, y: 0.4743771}
-      border: {x: 0, y: 0, z: 24, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88c4a1adafdbe6a4690befece210124b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ICONOS-02_0
-      rect:
-        serializedVersion: 2
-        x: 2385
-        y: 5682
-        width: 422
-        height: 397
+        height: 519
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,19 +271,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 465b64af1c0982a4ebb5385e0a891f0e
+      spriteID: 3fb0891826f522a48978fdd7c47122b0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ICONOS-02_1
+      name: ICONOS_actualizados_8
       rect:
         serializedVersion: 2
-        x: 2313
-        y: 4658
-        width: 530
-        height: 506
+        x: 2977
+        y: 1285
+        width: 449
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 10, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da5a7250c96d9e3428fa3c162b7475dd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ICONOS_actualizados_9
+      rect:
+        serializedVersion: 2
+        x: 3964
+        y: 1285
+        width: 459
+        height: 439
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,19 +311,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a82b83173cedad449c099ee04d38764
+      spriteID: fdcb99dd4af274141afe09a0a261067c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ICONOS-02_2
+      name: ICONOS_actualizados_10
       rect:
         serializedVersion: 2
-        x: 3372
-        y: 4694
-        width: 506
-        height: 434
+        x: 1990
+        y: 398
+        width: 519
+        height: 508
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -423,7 +331,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 930627253f7c81447a59953d776b035d
+      spriteID: f6f50ad132393f343a73fb91e9260659
       vertices: []
       indices: 
       edges: []
@@ -431,7 +339,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b4aefb839e085c64daa0f2b07010a788
+    spriteID: 7593745eb5b6219478d99711c9fd3540
     vertices: []
     indices: 
     edges: []

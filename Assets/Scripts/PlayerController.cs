@@ -37,19 +37,19 @@ public class PlayerController : MonoBehaviour {
     private float HANGED_ACTIONS_DELAY = 0.5f;
     private float hangedActionsTimer = 0;
 
+    private EnergyController energyController;
+
     public float CLIMB_VELOCITY_Y = 10;
     public float ClimbingVelocityX = 0;
     public float ClimbingVelocityY = 0;
-
-    public float energy = 100;
-
-    public string sceneName;
 
     // Use this for initialization
     void Start ()
     {
         rgdb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        energyController = GetComponent<EnergyController>();
+
         gravityScale = rgdb.gravityScale;
         //ClimbingVelocityY = CLIMB_VELOCITY_Y;
     }
@@ -72,10 +72,16 @@ public class PlayerController : MonoBehaviour {
         {
             rgdb.velocity = new Vector2(ForceX, move.y * ropeSpeed);
         }
-
         else
         {
             rgdb.velocity = new Vector2(move.x * maxSpeed + ForceX, rgdb.velocity.y + ForceY);
+        }
+
+        //If it is hanged on the rope and has no energy, the player falls
+        if (energyController.GetCurrentEnergy() <= energyController.GetEnergyRecoverySpeed())
+        {
+            
+            setNeutralState();
         }
     }
 
@@ -83,7 +89,10 @@ public class PlayerController : MonoBehaviour {
     {
         move = Vector2.zero;
         //Debug.Log(rgdb.velocity);
-        string clipName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        string clipName = "";
+        if (animator.GetCurrentAnimatorClipInfo(0).Length > 0) {
+            clipName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+        }
 
         velocityY = rgdb.velocity.y;
         
@@ -111,7 +120,7 @@ public class PlayerController : MonoBehaviour {
         {
             if(playerAction != PlayerAction.ClimbingUp)
             {
-                if (playerAction == PlayerAction.HangUp)
+                if (playerAction == PlayerAction.HangUp && energyController.GetCurrentEnergy() > 0)
                 {
                     hangedUpActions(clipName);
                 }
@@ -156,7 +165,7 @@ public class PlayerController : MonoBehaviour {
             idleAnimation(clipName);
         }
 
-        if (Input.GetKeyDown("up") && grounded)
+        if (Input.GetKeyDown("up") && grounded && energyController.HasEnergyForAction(PlayerAction.Jump))
         {
             rgdb.velocity = new Vector2(velocityX, jumpTakeOffSpeed);
 
@@ -166,10 +175,11 @@ public class PlayerController : MonoBehaviour {
                 rgdb.velocity = new Vector2(velocityX, jumpTakeOffSpeed * 1.2f);
             }
         }
-        else if (Input.GetKeyUp("up"))
+        else if (Input.GetKeyUp("up") && energyController.HasEnergyForAction(PlayerAction.Jump))
         {
             if (velocityY > 0)
             {
+                playerAction = PlayerAction.Jump;
                 rgdb.velocity = new Vector2(velocityX, rgdb.velocity.y * 0.5f);
                 //velocityY *= 0.5f;
             }
@@ -218,12 +228,10 @@ public class PlayerController : MonoBehaviour {
             if (rgdb.velocity.y > 0.1f && clipName != "Falling" && clipName != "AlwaysFall")
             {
                 animator.Play("NewJump");
-                playerAction = PlayerAction.Jump;
             }
-            else
+            else if(clipName != "AlwaysFall")
             {
-                animator.Play("Falling");
-                playerAction = PlayerAction.Jump;
+                playerAction = PlayerAction.Falling;
             }
         }
     }
@@ -356,7 +364,7 @@ public class PlayerController : MonoBehaviour {
                 if (canDie)
                 {
                     //StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, sceneName));
-                    FindObjectOfType<SceneChanger>().ChangeScene();
+                    FindObjectOfType<SceneChanger>().CurrentScene();
                     playerAction = PlayerAction.Death;
                 }
 
@@ -393,6 +401,15 @@ public class PlayerController : MonoBehaviour {
             if (collision.gameObject.tag == "RopeEnd")
             {
                 ropeEnd = true;
+            }
+
+            if (collision.gameObject.tag == "EnergyPlus")
+            {
+                Debug.Log("Gets energy");
+                ElfStatus.maxTotalEnergy += 20;
+                //FindObjectOfType<SceneChanger>().CurrentScene();
+                //Destroy(collision.gameObject);
+                energyController.CreateEnergyBar();
             }
         }
     }

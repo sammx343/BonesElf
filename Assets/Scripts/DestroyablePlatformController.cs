@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyablePlatformController : MonoBehaviour {
-    public GameObject platform;
     public GameObject plaftormSpriteObject;
     private SpriteRenderer sprite;
     private bool destroyNow = false;
@@ -42,6 +41,6 @@ public class DestroyablePlatformController : MonoBehaviour {
     IEnumerator Example()
     {
         yield return new WaitForSeconds(duration);
-        Destroy(platform);
+        Destroy(gameObject);
     }
 }

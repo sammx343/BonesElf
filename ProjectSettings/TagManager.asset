@@ -15,6 +15,7 @@ TagManager:
   - KillPlace
   - ClimbWall
   - CloudDestroyer
+  - EnergyPlus
   layers:
   - Default
   - TransparentFX

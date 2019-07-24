@@ -5,6 +5,8 @@ using UnityEngine;
 public class SceneChanger : MonoBehaviour {
     public Canvas canvas;
     public string sceneLoader;
+    public string currentScene;
+    public string NextScene;
 
     public float changeTimer = 2f;
 
@@ -19,16 +21,26 @@ public class SceneChanger : MonoBehaviour {
     {
     }
 
-    public void ChangeScene()
+    public void CurrentScene()
     {
-        StartCoroutine(ExecuteAfterTime(changeTimer));
+        StartCoroutine(ExecuteAfterTime(changeTimer, currentScene));
     }
 
-    IEnumerator ExecuteAfterTime(float time)
+    public void NextLevelScene()
+    {
+        StartCoroutine(ExecuteAfterTime(changeTimer, NextScene));
+    }
+
+    public void ChangeScene()
+    {
+        StartCoroutine(ExecuteAfterTime(changeTimer, sceneLoader));
+    }
+
+    IEnumerator ExecuteAfterTime(float time, string newScene)
     {
         yield return new WaitForSeconds(time);
 
-        StartCoroutine(canvas.GetComponent<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, sceneLoader));
+        StartCoroutine(canvas.GetComponent<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, newScene));
         // Code to execute after the delay
     }
 }
