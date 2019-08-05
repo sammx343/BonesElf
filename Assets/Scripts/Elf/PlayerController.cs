@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
     private Animator animator;
     public GameObject Elf;
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 
     private float velocityX = 0;
     private float velocityY = 0;
-    
+
     private bool grounded;
     public Transform groundCheck;
     float groundRadius = 0.5f;
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour {
     public float ClimbingVelocityY = 0;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         rgdb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -56,9 +57,9 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        ForceX = Mathf.Abs(ForceX) < 4 ? 0 : Mathf.Sign(ForceX) * (Mathf.Abs(ForceX) - gravityScale * windFriction/2);
+        ForceX = Mathf.Abs(ForceX) < 4 ? 0 : Mathf.Sign(ForceX) * (Mathf.Abs(ForceX) - gravityScale * windFriction / 2);
         ForceY = Mathf.Abs(ForceY) < 4 ? 0 : Mathf.Sign(ForceY) * (Mathf.Abs(ForceY) - gravityScale * windFriction);
-        grounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.5f , 1.5f), CapsuleDirection2D.Vertical, 0, whatIsGround);
+        grounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.5f, 1.5f), CapsuleDirection2D.Vertical, 0, whatIsGround);
 
         bool IsSlope = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.5f, 1.5f), CapsuleDirection2D.Vertical, 0, whatIsSlope);
 
@@ -80,7 +81,6 @@ public class PlayerController : MonoBehaviour {
         //If it is hanged on the rope and has no energy, the player falls
         if (energyController.GetCurrentEnergy() <= energyController.GetEnergyRecoverySpeed())
         {
-            
             setNeutralState();
         }
     }
@@ -88,20 +88,21 @@ public class PlayerController : MonoBehaviour {
     void Update()
     {
         move = Vector2.zero;
-        //Debug.Log(rgdb.velocity);
+
         string clipName = "";
-        if (animator.GetCurrentAnimatorClipInfo(0).Length > 0) {
+        if (animator.GetCurrentAnimatorClipInfo(0).Length > 0)
+        {
             clipName = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
         }
 
         velocityY = rgdb.velocity.y;
-        
+
         if (playerAction == PlayerAction.Death)
         {
             rgdb.gravityScale = gravityScale;
             if (!grounded)
             {
-                if(clipName != "AirDeath" && clipName != "AirDeathFalling" && clipName != "Death" && clipName != "StayDeath")
+                if (clipName != "AirDeath" && clipName != "AirDeathFalling" && clipName != "Death" && clipName != "StayDeath")
                     animator.Play("AirDeath");
             }
             else if (grounded)
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour {
                 {
                     animator.Play("StayDeath");
                 }
-                else if(clipName != "Death" && clipName != "StayDeath")
+                else if (clipName != "Death" && clipName != "StayDeath")
                 {
                     animator.Play("Death");
                 }
@@ -118,8 +119,9 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            if(playerAction != PlayerAction.ClimbingUp)
+            if (playerAction != PlayerAction.ClimbingUp)
             {
+                //if (playerAction == PlayerAction.HangUp)
                 if (playerAction == PlayerAction.HangUp && energyController.GetCurrentEnergy() > 0)
                 {
                     hangedUpActions(clipName);
@@ -138,6 +140,11 @@ public class PlayerController : MonoBehaviour {
         animator.SetFloat("velocityX", velocityX);
         animator.SetFloat("velocityY", velocityY);
         animator.SetBool("grounded", grounded);
+
+        if (velocityX == 1 || !grounded)
+        {
+            animator.SetBool("IsCrunched", false);
+        }
     }
 
     private void playerActions(string clipName)
@@ -152,39 +159,36 @@ public class PlayerController : MonoBehaviour {
             run("left");
             runAnimation();
         }
-        else if (Input.GetKey("down"))
+
+        if (Input.GetKey("down"))
         {
             crunchAnimation();
         }
         else if (Input.GetKeyUp("down"))
         {
-            postCrunchAnimation();
-        }
-        else
-        {
-            idleAnimation(clipName);
+            //postCrunchAnimation();
+            animator.SetBool("IsCrunched", false);
         }
 
         if (Input.GetKeyDown("up") && grounded && energyController.HasEnergyForAction(PlayerAction.Jump))
         {
             rgdb.velocity = new Vector2(velocityX, jumpTakeOffSpeed);
-
+            playerAction = PlayerAction.Jump;
             if (playerAction == PlayerAction.Crunch)
             {
                 playerAction = PlayerAction.JumpHigher;
                 rgdb.velocity = new Vector2(velocityX, jumpTakeOffSpeed * 1.2f);
             }
         }
-        else if (Input.GetKeyUp("up") && energyController.HasEnergyForAction(PlayerAction.Jump))
+        else if (Input.GetKeyUp("up"))
         {
             if (velocityY > 0)
             {
-                playerAction = PlayerAction.Jump;
                 rgdb.velocity = new Vector2(velocityX, rgdb.velocity.y * 0.5f);
-                //velocityY *= 0.5f;
             }
         }
 
+        idleAnimation(clipName);
         jumpAnimation(clipName);
     }
 
@@ -213,7 +217,7 @@ public class PlayerController : MonoBehaviour {
 
     private void idleAnimation(string clipName)
     {
-        if (grounded && velocityX < 0.1f && velocityY < 0.1f && clipName != "PostCrunch")
+        if (grounded && velocityX < 0.1f && velocityY < 0.1f && clipName != "crunch")
         {
             //animator.Play("Idle");
             playerAction = PlayerAction.Idle;
@@ -229,7 +233,7 @@ public class PlayerController : MonoBehaviour {
             {
                 animator.Play("NewJump");
             }
-            else if(clipName != "AlwaysFall")
+            else if (clipName != "AlwaysFall")
             {
                 playerAction = PlayerAction.Falling;
             }
@@ -240,7 +244,8 @@ public class PlayerController : MonoBehaviour {
     {
         if (playerAction != PlayerAction.Crunch && grounded && playerAction != PlayerAction.JumpHigher)
         {
-            animator.Play("PreCrunch");
+            //animator.Play("PreCrunch");
+            animator.SetBool("IsCrunched", true);
             playerAction = PlayerAction.Crunch;
         }
     }
@@ -249,8 +254,9 @@ public class PlayerController : MonoBehaviour {
     {
         if (playerAction == PlayerAction.Crunch && grounded)
         {
+            animator.SetBool("IsCrunched", false);
             playerAction = PlayerAction.PostCrunch;
-            animator.Play("PostCrunch");
+            //animator.Play("PostCrunch");
         }
     }
 
@@ -262,8 +268,8 @@ public class PlayerController : MonoBehaviour {
 
         if (hangedActionsTimer <= 0)
         {
-            if ( (Input.GetKeyUp("left") && horizontalDirection < 0 || Input.GetKeyUp("right") && horizontalDirection > 0) 
-                &&  !HangUpWall)
+            if ((Input.GetKeyUp("left") && horizontalDirection < 0 || Input.GetKeyUp("right") && horizontalDirection > 0)
+                && !HangUpWall)
             {
                 animator.Play("RopeChange");
                 hangedActionsTimer = HANGED_ACTIONS_DELAY;
@@ -288,7 +294,7 @@ public class PlayerController : MonoBehaviour {
         {
             animator.Play("Hanging");
         }
-        else if(clipName != "RopeFalling" && clipName != "RopeChange")
+        else if (clipName != "RopeFalling" && clipName != "RopeChange")
         {
             animator.Play("HangingIdle");
         }
@@ -317,7 +323,8 @@ public class PlayerController : MonoBehaviour {
         Elf.transform.localScale = theScale;
     }
 
-    public void climbingUp() {
+    public void climbingUp()
+    {
         ClimbingVelocityY = CLIMB_VELOCITY_Y;
     }
 
@@ -405,13 +412,24 @@ public class PlayerController : MonoBehaviour {
 
             if (collision.gameObject.tag == "EnergyPlus")
             {
-                Debug.Log("Gets energy");
-                ElfStatus.maxTotalEnergy += 20;
+                Debug.Log("Collision");
+                Debug.Log(ElfStatus.maxTotalEnergy);
+                ElfStatus.maxTotalEnergy += 1;
                 //FindObjectOfType<SceneChanger>().CurrentScene();
                 //Destroy(collision.gameObject);
+                StartCoroutine(LateCall(collision.gameObject.GetComponent<BoxCollider2D>()));
                 energyController.CreateEnergyBar();
             }
         }
+    }
+
+    IEnumerator LateCall(BoxCollider2D collider)
+    {
+        collider.enabled = false;
+
+        yield return new WaitForSeconds(3);
+
+        collider.enabled = true;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

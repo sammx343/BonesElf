@@ -3,5 +3,18 @@
     Elf,
     Dinosaur,
     Sheep,
-    Witch
+    Witch,
+    Gnom
 }
+
+public enum Emotion{
+    aburrido,
+    feliz,
+    hmm,
+    llorando,
+    muytriste,
+    rabioso,
+    triste,
+    normal
+}
+

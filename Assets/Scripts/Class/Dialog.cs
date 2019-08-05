@@ -5,11 +5,13 @@ using UnityEngine;
 public class Dialog {
     private string dialog;
     private Character character;
+    private Emotion emotion;
 
-	public Dialog(string dialog, Character character)
+	public Dialog(string dialog, Character character, Emotion emotion)
     {
         this.dialog = dialog;
         this.character = character;
+        this.emotion = emotion;
     }
 
     public string GetDialog()
@@ -20,5 +22,10 @@ public class Dialog {
     public Character GetCharacter()
     {
         return character;
+    }
+
+    public Emotion GetEmotion()
+    {
+        return emotion;
     }
 }

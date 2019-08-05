@@ -12,7 +12,6 @@ public class DialogsController : MonoBehaviour {
 
     public GameObject UIpanel;
     public Text textDialog;
-    public NamedImage[] pictures;
     public Button nextButton;
     public Button closeButton;
 
@@ -22,14 +21,6 @@ public class DialogsController : MonoBehaviour {
     private Conversation conversation;
 
     private bool isWrittingText = false;
-
-    [Serializable]
-    public struct NamedImage
-    {
-        public Sprite image;
-        public Character character;
-    }
-
 
     // Use this for initialization
     void Start ()
@@ -104,12 +95,14 @@ public class DialogsController : MonoBehaviour {
         //Starts coroutine for animated dialogs text, typewritter effect
         StartCoroutine ( AnimateText ( currentDialog.GetDialog() ));
 
-        characterImage.sprite = returnSpriteByCharacter(currentDialog.GetCharacter() );
+        characterImage.sprite = returnSpriteByCharacter(currentDialog);
     }
 
-    private Sprite returnSpriteByCharacter(Character character)
+    private Sprite returnSpriteByCharacter(Dialog currentDialog)
     {
-        return Array.Find(pictures, picture => picture.character == character).image;
+        print(currentDialog.GetCharacter() + "-" + currentDialog.GetEmotion());
+        return Resources.LoadAll<Sprite>("CharactersPictures/" + currentDialog.GetCharacter() + "-" + currentDialog.GetEmotion())[0];
+        //return Array.Find(pictures, picture => picture.character == character).image;
     }
 
     private void DestroyDialog()

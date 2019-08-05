@@ -1,11 +1,18 @@
-﻿public class ElfStatus {
-    public static float baseEnergy = 30;
-    public static float baseLife = 30;
-    public static float maxTotalEnergy = baseEnergy;
-    public static float maxTotalLife = baseLife;
+﻿public class ElfStatus
+{
+    public static int baseLife = 3;
+    public static int baseEnergy = 3;
+    public static int maxTotalEnergy = baseEnergy;
+    public static int maxTotalLife = baseLife;
 
     ElfStatus()
     {
 
     }
+}
+
+public enum ElfStat
+{
+    baseLife,
+    baseEnergy
 }

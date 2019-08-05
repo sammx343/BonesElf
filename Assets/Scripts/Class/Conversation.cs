@@ -12,9 +12,9 @@ public class Conversation {
         dialogs = new List<Dialog>();
     }
 
-    public void AddDialog(string dialog, Character characterId) {
+    public void AddDialog(string dialog, Character characterId, Emotion emotion) {
         dialogs.Add(
-            new Dialog(dialog, characterId)
+            new Dialog(dialog, characterId, emotion)
         );
     }
 

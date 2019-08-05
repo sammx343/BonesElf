@@ -1,0 +1,39 @@
+{
+    "conversations" : [
+        {
+            "id": 1,
+            "dialogs" : [
+                {
+                  "character" : "Elf",
+                  "dialog" : "Aja viejo Gnomo, como va la vaina",
+                  "status" : "feliz"
+                },
+                {
+                    "character" : "Gnom",
+                    "dialog" : "Ahí viejo Elfo, llevandola barro",
+                    "status" : "triste"
+                },
+                {
+                    "character" : "Elf",
+                    "dialog" : "Eche y por qué man",
+                    "status" : "normal"
+                },
+                {
+                    "character" : "Gnom",
+                    "dialog" : "Joda viejo Elfo, la hada cachona esa vale, pilla lo que está haciendo, me está robando marica",
+                    "status" : "rabioso"
+                },
+                {
+                    "character" : "Elf",
+                    "dialog" : "Eche cómo así .... a lo bien?",
+                    "status" : "hmm"
+                },
+                {
+                    "character" : "Gnom",
+                    "dialog" : "Sisa mani, a lo bien, pa que veas tú",
+                    "status" : "rabioso"
+                }
+            ]
+        }
+    ]
+}

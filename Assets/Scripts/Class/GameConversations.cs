@@ -8,31 +8,24 @@ public class GameConversations {
 	public GameConversations()
     {
         gameConversations = new List<Conversation>();
-
+        
         Conversation scene1Part1 = new Conversation(1);
-        scene1Part1.AddDialog("Buenas noches dijo el elfo", Character.Elf);
-        scene1Part1.AddDialog("Buenas noches dijo el dinosaurio", Character.Dinosaur);
-        scene1Part1.AddDialog("Buenas noches dijo la oveja", Character.Sheep);
-        scene1Part1.AddDialog("Como estamos todos aquí? Pasandola bueno", Character.Elf);
-        scene1Part1.AddDialog("Sisa mani, bien clarinete", Character.Dinosaur);
-        scene1Part1.AddDialog("Pinoleta suave socio", Character.Sheep);
-        scene1Part1.AddDialog("Nos pillamos compita", Character.Elf);
-        scene1Part1.AddDialog("Sisa, suerte es que te digo", Character.Sheep);
+        scene1Part1.AddDialog("Aja viejo Gnomo, como va la vaina", Character.Elf, Emotion.feliz);
+        scene1Part1.AddDialog("Ahí viejo Elfo, llevandola barro", Character.Gnom, Emotion.triste);
+        scene1Part1.AddDialog("Eche y por qué viejo man?", Character.Elf, Emotion.normal);
+        scene1Part1.AddDialog("Joda viejo Elfo, la hada cachona esa vale, pilla lo que está haciendo, me está robando marica", Character.Gnom, Emotion.rabioso);
+        scene1Part1.AddDialog("Eche cómo así .... a lo bien?", Character.Elf, Emotion.hmm);
+        scene1Part1.AddDialog("Sisa mani, a lo bien, pa que veas tú", Character.Gnom, Emotion.triste);
         addDialogs(scene1Part1);
 
         Conversation scene1Part2 = new Conversation(2);
-        scene1Part2.AddDialog("Que pasá o que wey wefwe fwefwef wef ef e fwef we fwef wefwe fwef wefwef wef wefwefwef wefw efwef wefwe fwefwefwefew wefwef", Character.Sheep);
-        scene1Part2.AddDialog("Que pasá o que wey", Character.Dinosaur);
-        scene1Part2.AddDialog("No sé, me trajeron aqui sin previo aviso", Character.Witch);
-        scene1Part2.AddDialog("Más tarde les tiro el secreto man", Character.Elf);
+        scene1Part2.AddDialog("Pues si man, como la víste?", Character.Gnom, Emotion.triste);
+        scene1Part2.AddDialog("Barro, esa hada está pesada", Character.Elf, Emotion.rabioso);
+        scene1Part2.AddDialog("Ven acá man, y no será que tú ... Joa ?", Character.Gnom, Emotion.feliz);
+        scene1Part2.AddDialog("Tirala", Character.Elf, Emotion.normal);
+        scene1Part2.AddDialog("Joa no será que tú me puedes hacer el dos capturando al hada pecueca esa?", Character.Gnom, Emotion.feliz);
+        scene1Part2.AddDialog("Sábes qué? Eso va", Character.Elf, Emotion.aburrido);
         addDialogs(scene1Part2);
-
-        Conversation scene1Part3 = new Conversation(3);
-        scene1Part3.AddDialog("Que pasá wefwe o que wey", Character.Sheep);
-        scene1Part3.AddDialog("Que pasá wefwef o que wey", Character.Dinosaur);
-        scene1Part3.AddDialog("No sé, wefewf me trajeron aqui sin previo aviso", Character.Witch);
-        scene1Part3.AddDialog("Más tarde wefwef les tiro el secreto man", Character.Elf);
-        addDialogs(scene1Part3);
     }
 
     public Conversation GetConversationById(int conversationId) {
