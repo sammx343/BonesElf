@@ -12,7 +12,7 @@ public class EnergyController : MonoBehaviour {
     public float currentEnergy = ElfStatus.maxTotalEnergy;
     public float jumpEnergy = 0.8f;
     public float hangUpEnergy = 0.014f;
-    public float energyRecoverySpeed = 0.01f;
+    public float energyRecoverySpeed = 0.02f;
     
     // Use this for initialization
     void Start ()

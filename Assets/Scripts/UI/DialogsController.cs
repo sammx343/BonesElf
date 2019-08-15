@@ -21,7 +21,7 @@ public class DialogsController : MonoBehaviour {
     private Conversation conversation;
 
     private bool isWrittingText = false;
-
+    public GameObject optionsPanel;
     // Use this for initialization
     void Start ()
     {
@@ -29,7 +29,8 @@ public class DialogsController : MonoBehaviour {
         conversation = gc.GetConversationById(conversationId);
     }
 
-    public void NextDialog() {
+    public void NextDialog() 
+    {
         if(isWrittingText)
         {
             StopAllCoroutines();
@@ -38,8 +39,13 @@ public class DialogsController : MonoBehaviour {
             isWrittingText = false;
         }
         else
-        {
-            if (dialogPosition == conversation.GetDialogs().Count - 1)
+        {   
+            if(conversation.GetHasOptional() && dialogPosition == conversation.GetOptionalDialogNumber())
+            {
+                optionsPanel.GetComponent<OptionsController>().ShowBook(this);
+                UIpanel.SetActive(false);
+            }
+            else if (dialogPosition >= conversation.GetDialogs().Count - 1)
             {
                 SwitchUIState(false);
                 dialogPosition = 0;
@@ -100,7 +106,6 @@ public class DialogsController : MonoBehaviour {
 
     private Sprite returnSpriteByCharacter(Dialog currentDialog)
     {
-        print(currentDialog.GetCharacter() + "-" + currentDialog.GetEmotion());
         return Resources.LoadAll<Sprite>("CharactersPictures/" + currentDialog.GetCharacter() + "-" + currentDialog.GetEmotion())[0];
         //return Array.Find(pictures, picture => picture.character == character).image;
     }

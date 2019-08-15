@@ -5,14 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BarController : MonoBehaviour {
-    public GameObject bar; 
     public GameObject barContainer;
     public GameObject elementQuantity; //Cantidad del elemento en color
     public GameObject squareContainer;
     public ElfStat elfStat;
-
-    public GameObject player;
-    private int playerQuantity;
     
     private float squareQuantity;
     public float barQuantity;

@@ -7,7 +7,7 @@ public class TrapController : MonoBehaviour {
     public float velocity = 0f;
     public float destroyableTimer = 10f;
     public Vector2 movementOrientation = Vector2.up;
-    public bool isDestroyable = true;
+    public bool isDestroyable = false;
     private Rigidbody2D rgdb;
 
     // Use this for initialization

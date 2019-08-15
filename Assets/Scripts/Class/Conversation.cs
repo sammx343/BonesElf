@@ -5,10 +5,20 @@ using UnityEngine;
 public class Conversation {
     private List<Dialog> dialogs;
     private int id;
-
+    private bool hasOptional;
+    private int optionalDialogNumber;
+    
 	public Conversation(int id)
     {
         this.id = id;
+        dialogs = new List<Dialog>();
+    }
+
+    public Conversation(int id, bool hasOptional, int optionalDialogNumber)
+    {
+        this.id = id;
+        this.hasOptional = hasOptional;
+        this.optionalDialogNumber = optionalDialogNumber;
         dialogs = new List<Dialog>();
     }
 
@@ -29,5 +39,13 @@ public class Conversation {
     public Dialog GetDialogByPosition(int dialogPosition)
     {
         return dialogs[dialogPosition];
+    }
+    
+    public bool GetHasOptional(){
+        return hasOptional;
+    }
+
+    public int GetOptionalDialogNumber(){
+        return optionalDialogNumber;
     }
 }

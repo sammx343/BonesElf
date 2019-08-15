@@ -16,6 +16,7 @@ TagManager:
   - ClimbWall
   - CloudDestroyer
   - EnergyPlus
+  - OptionsPanel
   layers:
   - Default
   - TransparentFX

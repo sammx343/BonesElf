@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameConversations {
+public class GameConversations 
+{
     public static List<Conversation> gameConversations;
 
 	public GameConversations()
@@ -18,13 +19,16 @@ public class GameConversations {
         scene1Part1.AddDialog("Sisa mani, a lo bien, pa que veas tú", Character.Gnom, Emotion.triste);
         addDialogs(scene1Part1);
 
-        Conversation scene1Part2 = new Conversation(2);
+        Conversation scene1Part2 = new Conversation(2, true, 4);
         scene1Part2.AddDialog("Pues si man, como la víste?", Character.Gnom, Emotion.triste);
         scene1Part2.AddDialog("Barro, esa hada está pesada", Character.Elf, Emotion.rabioso);
         scene1Part2.AddDialog("Ven acá man, y no será que tú ... Joa ?", Character.Gnom, Emotion.feliz);
         scene1Part2.AddDialog("Tirala", Character.Elf, Emotion.normal);
         scene1Part2.AddDialog("Joa no será que tú me puedes hacer el dos capturando al hada pecueca esa?", Character.Gnom, Emotion.feliz);
-        scene1Part2.AddDialog("Sábes qué? Eso va", Character.Elf, Emotion.aburrido);
+        //scene1Part2.AddDialog("Sábes qué? Eso va", Character.Elf, Emotion.aburrido);
+
+        
+
         addDialogs(scene1Part2);
     }
 

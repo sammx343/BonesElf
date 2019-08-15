@@ -33,12 +33,11 @@ public class DestroyablePlatformController : MonoBehaviour {
         {
             destroyNow = true;
             startTime = Time.time;
-            StartCoroutine(Example());
+            StartCoroutine(DestroyPlatform());
         }
     }
-    
 
-    IEnumerator Example()
+    IEnumerator DestroyPlatform()
     {
         yield return new WaitForSeconds(duration);
         Destroy(gameObject);

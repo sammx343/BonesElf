@@ -8,7 +8,7 @@ public class CloudGeneratorController : MonoBehaviour {
     public float maxTime = 10;
     public float cloudSpeed = -5;
     public float cloudSize = 2;
-    public float Zindex = 49;
+    public float Zindex;
 
     public Sprite[] sprites;
     public GameObject cloud;
