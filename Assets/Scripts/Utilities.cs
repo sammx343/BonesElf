@@ -16,4 +16,5 @@ public class Utilities {
     {
         return Random.Range(min, max);
     }
+
 }

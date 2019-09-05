@@ -47,6 +47,11 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if(ElfStatus.isCheckPointActive)
+        {
+            gameObject.transform.position = ElfStatus.checkPointPosition;
+        }
+
         rgdb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         energyController = GetComponent<EnergyController>();
@@ -107,7 +112,7 @@ public class PlayerController : MonoBehaviour
                 if (clipName != "AirDeath" && clipName != "AirDeathFalling" && clipName != "Death" && clipName != "StayDeath")
                     animator.Play("AirDeath");
             }
-            else if (grounded && velocityY == 0)
+            else if (grounded && Mathf.Abs(velocityY)  <= 0.1)
             {
                 if (clipName == "AirDeath" || clipName == "AirDeathFalling")
                 {
@@ -400,6 +405,7 @@ public class PlayerController : MonoBehaviour
 
             if (collision.gameObject.tag == "ClimbWall")
             {
+                Debug.Log("Should Climb");
                 ropeHangingActions();
                 HangUpWall = true;
             }

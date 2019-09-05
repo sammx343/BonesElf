@@ -2,6 +2,12 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+
+public enum FadeDirection
+{
+    In, //Alpha = 1
+    Out // Alpha = 0
+}
 public class SceneFader : MonoBehaviour
 {
 
@@ -9,11 +15,6 @@ public class SceneFader : MonoBehaviour
     public RawImage fadeOutUIImage;
     public float fadeSpeed = 0.8f;
     public Color color = Color.blue;
-    public enum FadeDirection
-    {
-        In, //Alpha = 1
-        Out // Alpha = 0
-    }
     
     #endregion
     #region MONOBHEAVIOR

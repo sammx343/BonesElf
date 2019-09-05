@@ -78,7 +78,6 @@ public class BarController : MonoBehaviour {
     //Completely recovers energy bar
     private void FillBarCompletely()
     {
-        RectTransform rect = barContainer.GetComponent<RectTransform>();
         barContainer.transform.localScale = new Vector2(squareQuantity, barContainer.transform.localScale.y);
     }
 

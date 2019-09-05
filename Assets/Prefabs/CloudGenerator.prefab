@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483477942245334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 427.6, y: 14.7, z: 100}
+  m_LocalPosition: {x: 13.52, y: 2, z: 12.009553}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,6 +58,7 @@ MonoBehaviour:
   cloudSize: 3
   Zindex: 100
   sprites:
-  - {fileID: 21300000, guid: d991fd5f07e3c3547a280049d5bb4a07, type: 3}
-  - {fileID: 21300000, guid: cfd2d6d769effe849904205e3c3a7c3a, type: 3}
-  cloud: {fileID: 1769687376063536, guid: d19369052169caa4fa7a935219511b18, type: 2}
+  - {fileID: 21300000, guid: ef4fb8aaf7bcf0341897d557bfef4af6, type: 3}
+  - {fileID: 21300002, guid: ef4fb8aaf7bcf0341897d557bfef4af6, type: 3}
+  - {fileID: 21300004, guid: ef4fb8aaf7bcf0341897d557bfef4af6, type: 3}
+  cloud: {fileID: 0}

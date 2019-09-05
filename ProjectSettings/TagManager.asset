@@ -17,6 +17,7 @@ TagManager:
   - CloudDestroyer
   - EnergyPlus
   - OptionsPanel
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Elf
     uniqueID: 3070389987
+    locked: 0
+  - name: InsiderTree
+    uniqueID: 2633067689
     locked: 0

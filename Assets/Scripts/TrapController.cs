@@ -13,7 +13,12 @@ public class TrapController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rgdb = GetComponent<Rigidbody2D>();
-        rgdb.velocity = movementOrientation * velocity;
+        // Debug.Log("Right");
+        // Debug.Log(transform.right);
+        // Debug.Log("Up");
+        // Debug.Log(transform.up);
+        //rgdb.velocity = newVelocity;
+        rgdb.velocity = transform.up * velocity;
     }
 	
 	// Update is called once per frame

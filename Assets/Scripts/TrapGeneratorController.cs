@@ -5,7 +5,6 @@ using UnityEngine;
 public class TrapGeneratorController : MonoBehaviour {
     public GameObject trapPrefab;
     public float objectVelocity = 20f;
-    public Vector2 movementOrientation = Vector2.up;
     public float generatorTimer = 5f;
     private float currentGeneratorTimer = 0f;
 
@@ -23,7 +22,8 @@ public class TrapGeneratorController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
         if (currentGeneratorTimer < 0f)
         {
             CreateEnemy();
@@ -55,10 +55,10 @@ public class TrapGeneratorController : MonoBehaviour {
             .GetComponent<TrapController>();
 
         trapController.velocity = objectVelocity;
-        trapController.movementOrientation = movementOrientation;
     }
 
-    private void trapDidShoot() {
+    private void trapDidShoot() 
+    {
         animator.SetBool("hasShot", true);
         animationTimer = ANIMATION_TIMER;
         hasShot = true;

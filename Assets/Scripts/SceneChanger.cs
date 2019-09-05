@@ -1,46 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour {
     public Canvas canvas;
-    public string sceneLoader;
     public string currentScene;
-    public string NextScene;
+    public string newScene;
 
     public float changeTimer = 2f;
 
-    // Use this for initialization
-    void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
+    void Start(){
     }
 
     public void CurrentScene()
     {
-        StartCoroutine(ExecuteAfterTime(changeTimer, currentScene));
+        StartCoroutine(CallFadeScene(changeTimer, currentScene));
     }
 
-    public void NextLevelScene()
+    public void LoadNewScene()
     {
-        StartCoroutine(ExecuteAfterTime(changeTimer, NextScene));
+        StartCoroutine(CallFadeScene(changeTimer, newScene));
     }
 
-    public void ChangeScene()
-    {
-        StartCoroutine(ExecuteAfterTime(changeTimer, sceneLoader));
+    public GameObject CreateBackgroundElementToFade(){
+        GameObject sceneFaderBackground = new GameObject("sceneFaderBackground");
+        sceneFaderBackground.transform.SetParent(canvas.transform);
+
+        RectTransform rt = sceneFaderBackground.AddComponent<RectTransform>();
+        RectTransform canvasRt = canvas.GetComponent<RectTransform>();
+
+        rt.sizeDelta = new Vector2(canvasRt.sizeDelta.x, canvasRt.sizeDelta.y);
+        rt.transform.position  = canvasRt.transform.position;
+
+        Image img = sceneFaderBackground.AddComponent<Image>();
+
+        img.color = Color.black;
+        img.color = new Color(img.color.r, img.color.g, img.color.b, 0);
+
+        return sceneFaderBackground;
     }
 
-    IEnumerator ExecuteAfterTime(float time, string newScene)
+    IEnumerator CallFadeScene(float time, string newScene)
     {
-        yield return new WaitForSeconds(time);
 
-        StartCoroutine(canvas.GetComponent<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, newScene));
-        // Code to execute after the delay
+        float fadeDuration = 3f;
+        Fader fader = CreateBackgroundElementToFade().AddComponent<Fader>();
+        fader.fadeObjectWithChilds(FadeDirection.In, fadeDuration);
+
+        yield return new WaitForSeconds(fadeDuration);
+
+        ChangeScene(newScene);
+        // StartCoroutine(canvas.GetComponent<SceneFader>().FadeAndLoadScene(FadeDirection.In, newScene));
+    }
+
+    public void ChangeScene(string sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
