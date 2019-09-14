@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckPointController : MonoBehaviour {
 
+	public SceneEnum scene;
 	// Use this for initialization
 	void Start () {
 		
@@ -14,11 +15,17 @@ public class CheckPointController : MonoBehaviour {
 		
 	}
 
+	public void checkPointSaveStatus()
+	{
+		ElfStatus.SaveSelfGameStatus(scene.ToString(), transform.position);
+	}
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if ( collision.gameObject.tag == "Elf"){
+		if ( collision.gameObject.tag == "Elf" )
+		{
 			ElfStatus.checkPointPosition = gameObject.transform.position;
-			ElfStatus.isCheckPointActive = true;
+			checkPointSaveStatus();
 		}
 	}
 }

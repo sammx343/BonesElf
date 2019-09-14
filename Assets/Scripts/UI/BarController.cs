@@ -71,7 +71,7 @@ public class BarController : MonoBehaviour {
         FillBarCompletely();
         for (int i = 0; i < squareQuantity; i++)
         {
-            squares.Add(CreateWhiteSquares("Square" + i, i));
+            // squares.Add(CreateWhiteSquares("Square" + i, i));
         }
     }
 

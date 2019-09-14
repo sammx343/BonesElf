@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour {
     public Canvas canvas;
     public string currentScene;
-    public string newScene;
+    public SceneEnum scene;
 
     public float changeTimer = 2f;
 
@@ -21,7 +21,12 @@ public class SceneChanger : MonoBehaviour {
 
     public void LoadNewScene()
     {
-        StartCoroutine(CallFadeScene(changeTimer, newScene));
+        StartCoroutine(CallFadeScene(changeTimer, scene.ToString()));
+    }
+
+    public void LoadSceneWithParams(string scene)
+    {
+        StartCoroutine(CallFadeScene(changeTimer, scene));
     }
 
     public GameObject CreateBackgroundElementToFade(){
@@ -33,6 +38,7 @@ public class SceneChanger : MonoBehaviour {
 
         rt.sizeDelta = new Vector2(canvasRt.sizeDelta.x, canvasRt.sizeDelta.y);
         rt.transform.position  = canvasRt.transform.position;
+        rt.transform.localScale = Vector3.one;
 
         Image img = sceneFaderBackground.AddComponent<Image>();
 
@@ -40,6 +46,11 @@ public class SceneChanger : MonoBehaviour {
         img.color = new Color(img.color.r, img.color.g, img.color.b, 0);
 
         return sceneFaderBackground;
+    }
+
+    public void FadeSceneOut(float fateTime){
+        Fader fader = CreateBackgroundElementToFade().AddComponent<Fader>();
+        fader.fadeObjectWithChilds(FadeDirection.Out, fateTime);
     }
 
     IEnumerator CallFadeScene(float time, string newScene)
@@ -52,7 +63,6 @@ public class SceneChanger : MonoBehaviour {
         yield return new WaitForSeconds(fadeDuration);
 
         ChangeScene(newScene);
-        // StartCoroutine(canvas.GetComponent<SceneFader>().FadeAndLoadScene(FadeDirection.In, newScene));
     }
 
     public void ChangeScene(string sceneToLoad)

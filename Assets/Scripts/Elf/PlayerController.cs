@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     private Animator animator;
     public GameObject Elf;
     private Rigidbody2D rgdb;
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if(ElfStatus.isCheckPointActive)
+        if(ElfStatus.checkPointPosition != Vector3.zero)
         {
             gameObject.transform.position = ElfStatus.checkPointPosition;
         }

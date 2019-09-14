@@ -8,9 +8,14 @@ public class SignUpController : MonoBehaviour {
 	List<bool> inputIsBlank;
 	public GameObject buttonSignUp;
 	public GameObject loaderIcon;
+	private User user;
+	
+	private Text serverErrorText;
 	// Use this for initialization
 	void Start () {
-		
+		serverErrorText = GameObject.Find("TextServerError").GetComponent<Text>();
+		SceneChanger changer = gameObject.GetComponent<SceneChanger>();
+		changer.FadeSceneOut(2f);
 	}
 	
 	// Update is called once per frame
@@ -32,11 +37,11 @@ public class SignUpController : MonoBehaviour {
 		bool foundBlankInput = inputIsBlank.Find(blank => blank);
 
 		if( !foundBlankInput )
-		{
-			buttonSignUp.SetActive(false);
-			loaderIcon.SetActive(true);
+		{	
+			serverErrorText.text = "";
+			LoadSignUpAnimation(true);
 
-			User user = new User();
+			user = new User();
 			user.NickName = NickName;
 			user.FirstName = FirstName;
 			user.LastName = LastName;
@@ -60,6 +65,8 @@ public class SignUpController : MonoBehaviour {
 
 		var JSON_Body = JsonUtility.ToJson(appInfo);
 
+		Debug.Log(JSON_Body);
+
 		PostRequestCallback signUpMethod = FinishSignUp;
 		var result = StartCoroutine(api.PostRequest(JSON_Body, signUpMethod));
 	}
@@ -70,30 +77,46 @@ public class SignUpController : MonoBehaviour {
 		changer.LoadNewScene();
 	}
 
-	private void FinishSignUp(bool successfulSignUp, string response)
+	private void FinishSignUp(bool requestError, string response)
 	{
-		if(successfulSignUp)
+		if(requestError)
 		{	
 			WebUser webUser = new WebUser();
 			string key = "";
 			try
 			{
 				JsonUtility.FromJsonOverwrite(response, webUser);
-				key = webUser.keys[0];
+
+				if(webUser.success)
+				{
+					ChangeScene();
+					key = webUser.keys[0];
+					
+					SaveSystem.SaveGameStatus("", ElfStatus.baseLife, ElfStatus.baseEnergy, Vector3.zero, user, key);
+					Debug.Log("This is the user key");
+					Debug.Log(key);
+				}
+				else
+				{
+					LoadSignUpAnimation(false);
+					serverErrorText.text = webUser.error;
+					Debug.Log(webUser.error);
+				}
 			}
 			catch(Exception e){
+				LoadSignUpAnimation(false);
 				Debug.Log(e);
 			}
-
-			Debug.Log("This is the user key");
-			Debug.Log(key);
-			ChangeScene();
 		}
 		else
 		{
-			buttonSignUp.SetActive(false);
-			loaderIcon.SetActive(true);
+			LoadSignUpAnimation(false);
 		}
+	}
+
+	private void LoadSignUpAnimation(bool isLoading){
+		loaderIcon.SetActive(isLoading);
+		buttonSignUp.SetActive(!isLoading);
 	}
 
 	private void ValidateInput(string inputText, string errorTextField, string textError)

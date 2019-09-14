@@ -7,13 +7,7 @@ public class OptionsController : MonoBehaviour {
 	private Animator animator;
 	GameObject book;
 	private DialogsController dialogController;
-	private float closingAnimationTime = 3f;
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
+	private float closingAnimationTime = 0.25f;
 
 	public void ShowBook(DialogsController dialogController)
 	{
@@ -21,7 +15,7 @@ public class OptionsController : MonoBehaviour {
 		gameObject.SetActive(true);
 
 		book = gameObject.transform.Find("Book").gameObject;
-		book.GetComponent<Fader>().fadeObjectWithChilds(FadeDirection.In, 3f);
+		book.GetComponent<Fader>().fadeObjectWithChilds(FadeDirection.In, closingAnimationTime);
 
 		animator = book.GetComponent<Animator>();
 		//animator.Play("BookOpen");
