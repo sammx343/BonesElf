@@ -11,7 +11,9 @@ public class SceneChanger : MonoBehaviour {
 
     public float changeTimer = 2f;
 
+    GameObject panelMushroomFade;
     void Start(){
+        panelMushroomFade = canvas.transform.Find("PanelMushroomFade").gameObject;
     }
 
     public void CurrentScene()
@@ -56,9 +58,12 @@ public class SceneChanger : MonoBehaviour {
     IEnumerator CallFadeScene(float time, string newScene)
     {
 
-        float fadeDuration = 3f;
-        Fader fader = CreateBackgroundElementToFade().AddComponent<Fader>();
-        fader.fadeObjectWithChilds(FadeDirection.In, fadeDuration);
+        float fadeDuration = 2f;
+        // Fader fader = CreateBackgroundElementToFade().AddComponent<Fader>();
+        // fader.fadeObjectWithChilds(FadeDirection.In, fadeDuration);
+
+        panelMushroomFade.SetActive(true);
+        panelMushroomFade.GetComponent<Animator>().Play("FadeIn");
 
         yield return new WaitForSeconds(fadeDuration);
 

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+public enum FadeDirection{
+    In,
+    Out
+}
+
 public class Fader : MonoBehaviour {
 
     private float fadeSpeed = 2f;
