@@ -3,5 +3,7 @@ public enum SceneEnum {
 	GameIntroFirstScene,
 	SignUp,
 	Menu,
-	DemoScene
+	DemoScene,
+
+	Level1and1
 }

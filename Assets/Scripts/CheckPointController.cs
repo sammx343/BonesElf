@@ -25,7 +25,10 @@ public class CheckPointController : MonoBehaviour {
 		if ( collision.gameObject.tag == "Elf" )
 		{
 			ElfStatus.checkPointPosition = gameObject.transform.position;
-			checkPointSaveStatus();
+
+			if( !string.IsNullOrEmpty(ElfStatus.userKey)){
+				checkPointSaveStatus();
+			}
 		}
 	}
 }
