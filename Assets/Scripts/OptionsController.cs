@@ -7,7 +7,7 @@ public class OptionsController : MonoBehaviour {
 	private Animator animator;
 	GameObject book;
 	private DialogsController dialogController;
-	private float closingAnimationTime = 0.25f;
+	private float closingAnimationTime = 1f;
 
 	public void ShowBook(DialogsController dialogController)
 	{

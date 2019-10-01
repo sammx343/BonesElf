@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         rgdb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         energyController = GetComponent<EnergyController>();
+        energyController.FillEnergyCompletely();
 
         gravityScale = rgdb.gravityScale;
         //ClimbingVelocityY = CLIMB_VELOCITY_Y;
@@ -374,12 +375,14 @@ public class PlayerController : MonoBehaviour
     {
         if (playerAction != PlayerAction.Death)
         {
-            if (collision.gameObject.tag == "Trap" || collision.gameObject.tag == "KillPlace")
+            if (collision.gameObject.tag == "Trap" 
+                || collision.gameObject.tag == "KillPlace" 
+                || collision.gameObject.tag == "BindWeed")
             {
                 if (canDie)
                 {
                     //StartCoroutine(GameObject.FindObjectOfType<SceneFader>().FadeAndLoadScene(SceneFader.FadeDirection.In, sceneName));
-                    FindObjectOfType<SceneChanger>().CurrentScene();
+                    FindObjectOfType<SceneChanger>().LoadNewScene();
                     playerAction = PlayerAction.Death;
                 }
 

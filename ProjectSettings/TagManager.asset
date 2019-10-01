@@ -18,6 +18,7 @@ TagManager:
   - EnergyPlus
   - OptionsPanel
   - CheckPoint
+  - BindWeed
   layers:
   - Default
   - TransparentFX
@@ -60,4 +61,7 @@ TagManager:
     locked: 0
   - name: InsiderTree
     uniqueID: 2633067689
+    locked: 0
+  - name: CanvasLayer
+    uniqueID: 4277303697
     locked: 0

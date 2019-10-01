@@ -46,6 +46,6 @@ public class MenuSceneController : MonoBehaviour {
 	public void LoadNewGame()
 	{
 		SceneChanger changer = gameObject.GetComponent<SceneChanger>();
-		changer.LoadSceneWithParams(SceneEnum.SignUp.ToString());
+		changer.LoadSceneWithParams(SceneEnum.SignUp.ToString(), 1f);
 	}
 }

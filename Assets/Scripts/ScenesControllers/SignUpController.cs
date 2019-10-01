@@ -85,6 +85,7 @@ public class SignUpController : MonoBehaviour {
 			string key = "";
 			try
 			{
+				Debug.Log(response);
 				JsonUtility.FromJsonOverwrite(response, webUser);
 
 				if(webUser.success)
@@ -100,7 +101,6 @@ public class SignUpController : MonoBehaviour {
 				{
 					LoadSignUpAnimation(false);
 					serverErrorText.text = webUser.error;
-					Debug.Log(webUser.error);
 				}
 			}
 			catch(Exception e){
@@ -111,6 +111,7 @@ public class SignUpController : MonoBehaviour {
 		else
 		{
 			LoadSignUpAnimation(false);
+			serverErrorText.text = "No tienes conexión a internet";
 		}
 	}
 

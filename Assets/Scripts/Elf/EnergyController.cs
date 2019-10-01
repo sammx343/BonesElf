@@ -80,12 +80,12 @@ public class EnergyController : MonoBehaviour {
     }
 
     //Recovers energy bar by an amout
-    private void FillEnergy()
+    public void FillEnergy()
     {
         ChangeEnergy(energyRecoverySpeed);
     }
     
-    private void FillEnergyCompletely()
+    public void FillEnergyCompletely()
     {
         ChangeEnergy(maxTotalEnergy);
     }
